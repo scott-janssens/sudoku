@@ -1,0 +1,170 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.grid-cell {
+  display: grid;
+  grid-template: 20px 20px 20px / 20px 20px 20px;
+  background-color: white;
+  border: solid 1px black;
+  font-family: sans-serif;
+}
+
+.cell-value {
+  color: black;
+  font-family: sans-serif;
+  font-size: 36px;
+  text-align: center;
+  line-height: 60px;
+  background-color: white;
+  border: solid 1px black;
+}
+
+.cell-puzzle {
+  color: lightblue;
+  font-family: sans-serif;
+  font-size: 36px;
+  text-align: center;
+  line-height: 60px;
+  background-color: white;
+  border: solid 1px black;
+}
+
+.cell-item-1 {
+  grid-column: 1;
+  grid-row: 1;
+  color: gray;
+}
+
+.cell-item-1:hover {
+  background-color: lightgray;
+}
+
+.cell-item-2 {
+  grid-row: 1;
+  grid-column: 2;
+  color: gray;
+}
+
+.cell-item-2:hover {
+  background-color: lightgray;
+}
+
+.cell-item-3 {
+  grid-row: 1;
+  grid-column: 3;
+  color: gray;
+}
+
+.cell-item-3:hover {
+  background-color: lightgray;
+}
+
+.cell-item-4 {
+  grid-row: 2;
+  grid-column: 1;
+  color: gray;
+}
+
+.cell-item-4:hover {
+  background-color: lightgray;
+}
+
+.cell-item-5 {
+  grid-row: 2;
+  grid-column: 2;
+  color: gray;
+}
+
+.cell-item-5:hover {
+  background-color: lightgray;
+}
+
+.cell-item-6 {
+  grid-row: 2;
+  grid-column: 3;
+  color: gray;
+}
+
+.cell-item-6:hover {
+  background-color: lightgray;
+}
+
+.cell-item-7 {
+  grid-row: 3;
+  grid-column: 1;
+  color: gray;
+}
+
+.cell-item-7:hover {
+  background-color: lightgray;
+}
+
+.cell-item-8 {
+  grid-row: 3;
+  grid-column: 2;
+  color: gray;
+}
+
+.cell-item-8:hover {
+  background-color: lightgray;
+}
+
+.cell-item-9 {
+  grid-row: 3;
+  grid-column: 3;
+  color: gray;
+}
+
+.cell-item-9:hover {
+  background-color: lightgray;
+}
+
+.cell-item-unavailable {
+  color: transparent;
+  pointer-events: none;
+}
+
+.grid-cell-group {
+  display: grid;
+  grid-template: 60px 60px 60px / 60px 60px 60px;
+  border: solid 3px black;
+}
+
+.board-container {
+  display: inline-block;
+}
+
+.grid-board {
+  display: grid;
+  grid-template: 180px 180px 180px / 180px 180px 180px;
+  width: max-content;
+  height: max-content;
+  user-select: none;
+  margin: 15px;
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+.button {
+  width: 100px;
+  height: 30px;
+}
+
+.board-button {
+  width: 100px;
+  height: 30px;
+  margin: 15px;
+}
