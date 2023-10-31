@@ -139,6 +139,8 @@ code {
   display: grid;
   grid-template: 60px 60px 60px / 60px 60px 60px;
   border: solid 3px black;
+  margin-left: -6px;
+  margin-top: -6px;
 }
 
 .board-container {
