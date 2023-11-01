@@ -13,7 +13,8 @@ const Board = () => {
     }, [boardArray]);
 
     const onGameOver = () => {
-        Array.from(document.getElementsByClassName("board-button")).map(x => x.classList.add("hidden"));
+        Array.from(document.getElementsByClassName("board-button-container")).map(x => x.classList.add("hidden"));
+        Array.from(document.getElementsByClassName("board-solved")).map(x => x.classList.remove("hidden"));
     };
 
     const undo = () => {
@@ -36,10 +37,11 @@ const Board = () => {
                 <CellGroup className="cell-item-1" region={7} />
                 <CellGroup className="cell-item-1" region={8} />
             </div>
-            <div>
+            <div className="board-button-container">
                 <button className="board-button" onClick={undo}>Undo</button>
                 <button className="board-button" onClick={reset}>Reset</button>
             </div>
+            <div className="board-solved hidden">SOLVED!!!</div>
         </div>
     );
 };
