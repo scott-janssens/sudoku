@@ -6,7 +6,7 @@ class SudokuArray {
     private _random: seedrandom;
     private _items: SudokuItem[];
     private _numbersAvailable: number[][] = [];
-    private _undo: number[] = [];
+    private _undo: UndoItem[] = [];
 
     private _itemChanged: IAppEvent<SudokuItem>[] = [];
     public gameOver: IAppEvent<void> = new AppEvent<void>();
@@ -239,12 +239,16 @@ class SudokuArray {
         return [Math.floor(reg / 3) * 3, Math.floor(reg % 3) * 3];
     }
     public setItemValue(item: SudokuItem, value: number): void {
-        if (item.value === 0 && value !== 0) {
-            this._undo.push(this.toIndex(item.row, item.column));
-        }
-
+        this.setItemValueInternal(item, value);
+    }
+    private setItemValueInternal(item: SudokuItem, value: number, pushUndo: boolean = true): void {
         let index = this.toIndex(item.row, item.column);
         let values = this._items.map(x => x.value);
+
+        if (pushUndo) {
+            this._undo.push(new UndoItem(index, values[index]));
+        }
+
         values[index] = value;
 
         let itemEvent = this._itemChanged as AppEvent<SudokuItem>[];
@@ -302,17 +306,27 @@ class SudokuArray {
     }
     public undo(): void {
         if (this._undo.length > 0) {
-            let index = this._undo.pop() as number;
-            this.setItemValue(this._items[index], 0);
+            let undoItem = this._undo.pop()!;
+            this.setItemValueInternal(this._items[undoItem.index], undoItem.value, false);
         }
     }
     public reset(): void {
         this._undo.length = 0;
         this._items.forEach(x => {
             if (x.value > 0) {
-                this.setItemValue(x, 0);
+                this.setItemValueInternal(x, 0);
             }
         });
+    }
+}
+
+class UndoItem {
+    index: number;
+    value: number;
+
+    constructor(index: number, value: number) {
+        this.index = index;
+        this.value = value;
     }
 }
 
